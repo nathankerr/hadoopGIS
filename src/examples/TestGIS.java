@@ -1,11 +1,13 @@
+package hadoopGIS.examples;
+
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
 
-import cloudgis.GIS;
-import cloudgis.GISInputFormat;
-import cloudgis.GISOutputFormat;
+import hadoopGIS.GIS;
+import hadoopGIS.GISInputFormat;
+import hadoopGIS.GISOutputFormat;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -173,7 +175,7 @@ public class TestGIS extends Configured implements Tool, Mapper<LongWritable, GI
 	// For Tool interface
 	public int run(String[] args) throws Exception
 	{
-		JobConf job = new JobConf(getConf(), this.getClass());
+		JobConf job = new JobConf(new Configuration(), this.getClass());
 
 		GISInputFormat.setInputPaths(job, new Path("/user/alaster/gis/jobs.gis"));
 		GISOutputFormat.setOutputPath(job, new Path("output"));

@@ -4,7 +4,7 @@ By Nathan Kerr
 
 h2. Dependencies
 
-* Hadoop 0.19.x
+* Hadoop 0.19.x, Has worked on 0.20.1
 * JTS 1.8.x
 
 h2. License

@@ -1,8 +1,8 @@
-package cloudgis;
+package hadoopGIS;
 
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileSplit;
-import cloudgis.GISRecordReader;
+import hadoopGIS.GISRecordReader;
 import org.apache.hadoop.mapred.InputSplit;
 import java.io.IOException;
 import org.apache.hadoop.mapred.JobConf;

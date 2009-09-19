@@ -1,4 +1,4 @@
-package cloudgis;
+package hadoopGIS;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.io.FileReader;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.mapred.FileSplit;
-import cloudgis.GIS;
+import hadoopGIS.GIS;
 import java.io.IOException;
 import org.apache.hadoop.mapred.LineRecordReader;
 import org.apache.hadoop.io.LongWritable;

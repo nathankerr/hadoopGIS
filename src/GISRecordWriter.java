@@ -1,7 +1,7 @@
-package cloudgis;
+package hadoopGIS;
 
 import java.io.DataOutputStream;
-import cloudgis.GIS;
+import hadoopGIS.GIS;
 import java.io.IOException;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;

@@ -1,9 +1,9 @@
-package cloudgis;
+package hadoopGIS;
 
 import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.FSDataOutputStream;
-import cloudgis.GIS;
+import hadoopGIS.GIS;
 import java.io.IOException;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.io.LongWritable;

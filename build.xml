@@ -1,0 +1,23 @@
+<project name="hadoopGIS" default="dist">
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" debug="on">
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile">
+		<jar jarfile="${ant.project.name}.jar" basedir="${build}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete file="${ant.project.name}.jar"/>
+	</target>
+</project>
