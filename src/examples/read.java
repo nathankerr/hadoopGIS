@@ -40,7 +40,10 @@ public class read extends Configured implements Tool, Mapper<LongWritable, GIS, 
 	// For Mapper interface
 	public void map(LongWritable key, GIS value, OutputCollector<LongWritable, GIS> output, Reporter reporter) throws IOException
 	{
-		output.collect(key, value);
+		// emit only the record with the correct key
+		if(key.equals(new LongWritable(1008130))) {
+			output.collect(key, value);
+		}
 	}
 
 	// For Reducer interface
@@ -48,10 +51,7 @@ public class read extends Configured implements Tool, Mapper<LongWritable, GIS, 
 	{
 		while(values.hasNext()) {
 			try {
-				// emit only the record with the correct key
-				if(key.equals(new LongWritable(1008130))) {
-					output.collect(key, values.next());
-				}
+				output.collect(key, values.next());
 			} catch (IOException e) {}
 		}
 	}

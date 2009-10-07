@@ -40,22 +40,19 @@ public class update extends Configured implements Tool, Mapper<LongWritable, GIS
 	// For Mapper interface
 	public void map(LongWritable key, GIS value, OutputCollector<LongWritable, GIS> output, Reporter reporter) throws IOException
 	{
+		// Change record 1008130 to a Commercial parcel
+		if(key.equals(new LongWritable(1008130))) {
+			value.attributes.put("devtype", "C");
+		}
 		output.collect(key, value);
 	}
 
 	// For Reducer interface
 	public void reduce(LongWritable key, Iterator<GIS> values, OutputCollector<LongWritable, GIS> output, Reporter reporter)
 	{
-		GIS value;
-
 		while(values.hasNext()) {
-			value = values.next();
-			// Change record 1008130 to a Commercial parcel
-			if(key.equals(new LongWritable(1008130))) {
-				value.attributes.put("devtype", "C");
-			}
 			try {
-				output.collect(key, value);
+				output.collect(key, values.next());
 			} catch (IOException e) {}
 		}
 	}
