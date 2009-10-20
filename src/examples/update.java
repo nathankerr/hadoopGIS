@@ -71,6 +71,10 @@ public class update extends Configured implements Tool, Mapper<LongWritable, GIS
 		JobConf job = new JobConf(new Configuration(), this.getClass());
 
 		GISInputFormat.setInputPaths(job, new Path("/user/alaster/gis/parcels.gis"));
+		Path p = new Path ("/user/alaster/gis/parcels.names");
+		DistributedCache.addCacheFile (p.toUri (), job);
+		job.set ("columnNames", p.getName ());
+
 		GISOutputFormat.setOutputPath(job, new Path("output"));
 
 		job.setJobName("hadoopGIS.examples.update");
@@ -81,7 +85,8 @@ public class update extends Configured implements Tool, Mapper<LongWritable, GIS
      
 		job.setInputFormat(GISInputFormat.class);
 		//job.setOutputFormat(TextOutputFormat.class);
-		job.setOutputValueClass(GISOutputFormat.class);
+		job.setOutputValueClass(GIS.class);
+		job.setOutputFormat(GISOutputFormat.class);
 
 		return JobClient.runJob(job).getJobState();
  	}
@@ -90,6 +95,6 @@ public class update extends Configured implements Tool, Mapper<LongWritable, GIS
 	// Thus must use exit instead of return
 	// Also must directly use the class name instead of figuring it out
 	public static void main(String[] args) throws Exception {
-		System.exit(ToolRunner.run(new Configuration(), new TestGIS(), args));
+		System.exit(ToolRunner.run(new Configuration(), new hadoopGIS.examples.update(), args));
 	}
 }
