@@ -90,7 +90,7 @@ public class GIS extends BinaryComparable implements Writable
 				finalString.append(",");
 		}
 
-		finalString.append ("\n");
+		//finalString.append ("\n");
 		return finalString.toString ();
 	}
 

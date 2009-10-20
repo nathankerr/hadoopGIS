@@ -73,8 +73,11 @@ class GISRecordReader implements RecordReader<LongWritable, GIS>
 	public synchronized boolean next(LongWritable key, GIS value) throws IOException
 	{
 		Text textValue = new Text();
-		if (reader.next(key, textValue)) 
-			return value.update(textValue, columnList);
+		if (reader.next(key, textValue)) {
+			value.update(textValue, columnList);
+			key.set(new Long(value.attributes.get("id")));
+			return true;
+		}
 		return false;
 	}
 }

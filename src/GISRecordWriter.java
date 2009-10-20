@@ -19,6 +19,7 @@ public class GISRecordWriter<LongWritable, GIS> implements RecordWriter<LongWrit
 
 	public synchronized void write(LongWritable key, GIS value) throws IOException {
 		out.writeBytes(value.toString());
+		out.writeBytes("\n");
 	}
 
 	public synchronized void close(Reporter reporter) throws IOException {
