@@ -48,13 +48,13 @@ public class chained extends Configured implements Tool, Mapper<LongWritable, GI
 		Iterator it = parcels.iterator();
 		while (it.hasNext())
 		{
-			Map.Entry entry = (Map.Entry) it.next();
+			GIS parcel = (GIS) it.next();
 
-			currDistance = value.geometry.distance (((GIS) entry).geometry);
+			currDistance = value.geometry.distance(parcel.geometry);
 			if (currDistance < minDistance)
 			{
 				minDistance = currDistance;
-				closestParcel = ((Integer) entry.getKey ()).intValue ();
+				closestParcel = new Integer(parcel.attributes.get("id"));
 			}
 		}
 
